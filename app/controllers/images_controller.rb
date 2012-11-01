@@ -4,8 +4,6 @@ class ImagesController < ApplicationController
   expose(:images)
   expose(:gallery)
   expose(:owner) {image.gallery}
-  def new
-  end
 
   def create
     @image = gallery.images.new(params[:image])
@@ -16,6 +14,7 @@ class ImagesController < ApplicationController
       render "new"
     end
   end
+
   def update
     if image.save
       redirect_to gallery, notice: "Image successfully updated."
@@ -24,14 +23,9 @@ class ImagesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def destroy
     image.destroy
     redirect_to gallery, notice: "Image successfully deleted."
   end
 
-  def move
-  end
 end
