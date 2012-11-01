@@ -1,34 +1,38 @@
-#navigation
-  %ul
-    %li= link_to "Home", root_path
-    %li= link_to "Galleries", galleries_path
-    %li= link_to "About", slug_path("about")
-    %li= link_to "Resume", slug_path("resume")
-    %li= link_to "Contact", contact_path
-    %li= link_to "News", posts_path
 
+#page_body
+  .title
+    %h1 Contact
 
-.form
-  = form_for @message, :url => contact_path do |f|
-    .field
-      = f.label :name
-      %br
-      = f.text_field :name
+  #navigation
+    %ul
+      %li= link_to "Home", root_path
+      %li= link_to "Galleries", galleries_path
+      %li= link_to "About", slug_path("about")
+      %li= link_to "Resume", slug_path("resume")
+      %li= link_to "Contact", contact_path
+      %li= link_to "News", posts_path
 
-    .field
-      = f.label :email
-      %br
-      = f.text_field :email
+  .form
+    = form_for @message, :url => contact_path do |f|
+      .field
+        = f.label :name
+        %br
+        = f.text_field :name
 
-    .field
-      = f.label :subject
-      %br
-      = f.text_field :subject
+      .field
+        = f.label :email
+        %br
+        = f.text_field :email
 
-    .field
-      = f.label :body
-      %br
-      = f.text_area :body
+      .field
+        = f.label :subject
+        %br
+        = f.text_field :subject
 
-    .action
-      = f.submit "Send"
+      .field
+        = f.label :body
+        %br
+        = f.text_area :body
+
+      .action
+        = f.submit "Send"

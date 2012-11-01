@@ -8,10 +8,11 @@ div {
 div.galleries{
   display:inline-block;
   float: left;
-  margin:10px;
+  margin-left:10px;
 }
 
 div.images {
+  margin-left:10px;
   float:left;
   display:inline;
   position:relative;
@@ -20,8 +21,7 @@ div.images {
 
 div.image {
   display: inline-block;
-  border: solid 1px black;
-  margin: 5px;
+  margin: 0px 5px 5px 5px;
   width: 200px;
   padding: 15px;
   background-color: #eeeeee;
@@ -35,7 +35,7 @@ div.picture {
 div.gallery {
   display:inline-block;
   border: solid 1px black;
-  margin:5px;
+  margin: 0px 5px 5px 5px;
   width:200px;
   text-align:center;
   float:left;
