@@ -17,9 +17,9 @@
   .images
     - galleries.each do |g|
       .image
-        = g.name
-        %br
-        -if g.images.first
-          = link_to image_tag(g.thumb(g.images.first), width:200), g
-        -else
-          = link_to g.name, g
+        .title= g.name
+        .picture
+          -if g.images.first
+            = link_to image_tag(g.thumb(g.images.first)), g
+          -else
+            = link_to g.name, g
