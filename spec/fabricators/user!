@@ -1,2 +1,4 @@
 Fabricator(:user) do
+ name "Danny"
 end
+
