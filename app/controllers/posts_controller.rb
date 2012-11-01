@@ -24,4 +24,5 @@ class PostsController < ApplicationController
     post.destroy
     redirect_to posts_path, notice: "Post successfully destroyed."
   end
+
 end
