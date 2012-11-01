@@ -6,4 +6,5 @@ class ContactMailer < ActionMailer::Base
     @message = message
     mail(:subject => "[LauraBearl.com Contact]: #{message.subject}")
   end
+
 end
