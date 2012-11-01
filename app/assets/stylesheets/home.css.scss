@@ -1,0 +1,52 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#logo {
+  display: inline-block;
+  font-family: sans-serif;
+  text-color: black;
+  top: 20px;
+  float:left;
+}
+
+div#center {
+  position: relative;
+  left:25%;
+  width:75%;
+  margin-top:25px;
+}
+
+div#painting { 
+  float:left;
+  display: inline-block;
+  top: 20px;
+}
+
+div#navigation {
+  display: inline-block;
+  background-color: #eeeeee;
+  padding-right: 30px;
+  top: 20px;
+  float: left;
+  width:100px;
+  a {
+    text-decoration: none;
+    color: #999999;
+  }
+
+  a:visited {
+    color: #999999;
+  }
+
+  a:hover {
+    text-decoration: underline overline;
+  }
+
+  ul {
+    list-style-type: none;
+    text-color: #999999;
+  }
+}
+
+

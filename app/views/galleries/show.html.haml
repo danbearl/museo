@@ -1,0 +1,30 @@
+.title
+  %h1= "#{gallery.name}"
+
+#user_nav
+  - if current_user
+    = link_to "Edit Gallery", edit_gallery_path(gallery)
+    = " | "
+    = link_to "Destroy Gallery", gallery, :confirm => "Deleting a gallery will delete all associated images and is irreversible. Do you wish to continue?", :method => :delete
+    = " | "
+    = link_to "New Image", new_gallery_image_path(gallery)
+
+#navigation
+  %ul
+    %li= link_to "Home", root_path
+    %li= link_to "Galleries", galleries_path
+    %li= link_to "About", slug_path("about")
+    %li= link_to "Resume", slug_path("resume")
+    %li= link_to "Contact", contact_path
+    %li= link_to "News", posts_path
+
+.images
+  - images.each do |image|
+    .image
+      .title= image.title
+      .picture
+        = link_to image_tag(image.picture_url(:thumb).to_s), image.picture_url.to_s
+      - if current_user
+        = link_to "Edit", edit_gallery_image_path(gallery, image)
+        = " | "
+        = link_to "Delete", [gallery, image], confirm: "Deleting is irreversible. Do you wish to continue?", method: :delete

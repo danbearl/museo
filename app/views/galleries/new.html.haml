@@ -1,0 +1,19 @@
+%h3 Create New Gallery
+
+= form_for gallery do |f|
+  .error_messages
+    - if gallery.errors.any?
+      %h2 Form is invalid
+      %ul
+        - gallery.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :category
+    %br
+    = f.text_field :category
+  .action
+    = f.submit

@@ -1,0 +1,27 @@
+%h1= "Create New Image in #{gallery.name}"
+= form_for image, :url => { :action => "create"}, :html => {:multipart => true} do |f|
+  .error_messages
+    - if image.errors.any?
+      %h2 Form is invalid
+      %ul
+        -image.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    %br
+    = f.text_field :title
+
+  .field
+    = f.label :category
+    %br
+    = f.text_field :category
+
+  .field
+    = f.file_field :picture
+    
+  .action
+    =f.submit
+
+.bottom_nav
+  = link_to "Back", gallery

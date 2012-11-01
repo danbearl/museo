@@ -1,0 +1,21 @@
+.title
+  %h1 Galleries
+- if current_user
+  #user_nav
+    = link_to "New Gallery", new_gallery_path
+
+#navigation
+  %ul
+    %li= link_to "Home", root_path
+    %li= link_to "Galleries", galleries_path
+    %li= link_to "About", slug_path("about")
+    %li= link_to "Resume", slug_path("resume")
+    %li= link_to "Contact", contact_path
+    %li= link_to "News", posts_path
+
+.galleries
+  - galleries.each do |g|
+    .gallery
+      = g.name
+      %br
+      = link_to image_tag(g.thumb(g.images.first), width:200), g

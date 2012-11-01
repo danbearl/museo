@@ -1,0 +1,25 @@
+- if current_user
+  = link_to "New Post", new_post_path
+
+#page_body
+  .title
+    %h1 News
+  #navigation
+    %ul
+      %li= link_to "Home", root_path
+      %li= link_to "Galleries", galleries_path
+      %li= link_to "About", slug_path("about")
+      %li= link_to "Resume", slug_path("resume")
+      %li= link_to "Contact", contact_path
+      %li= link_to "News", posts_path
+
+  .posts
+    - posts.each do |post|
+      .post
+        %h2= post.title
+        %p.time= post.created_at.to_s(:us)
+        %p.body= post.body
+        - if current_user
+          = link_to "Edit", edit_post_path(post)
+          |
+          = link_to "Delete", post, confirm: "Deleting is irreversible. Do you wish to continue?", method: :delete

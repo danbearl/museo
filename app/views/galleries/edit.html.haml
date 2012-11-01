@@ -1,0 +1,21 @@
+%h1= "Editing #{gallery.name}"
+
+- if current_user
+  = form_for gallery do |f|
+    .field
+      = f.label :name
+      %br
+      = f.text_field :name
+
+    .field
+      = f.label :category
+      %br
+      = f.text_field :category
+
+    .action
+      = f.submit "Update Gallery"
+- else
+  %h2 You must be logged in to use this action
+
+.bottom_nav
+  %p= link_to "Back", gallery
