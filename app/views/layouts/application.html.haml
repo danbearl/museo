@@ -1,10 +1,14 @@
 !!!  html
+
 %html
+
   %head
-    %title Museo
+    
+    %title Laura Bearl
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+
   %body
 
     - flash.each do |name, msg|
@@ -14,8 +18,9 @@
       - if current_user
         = "Logged in as #{current_user.name}"
         = link_to "Log Out", log_out_path
+
     #main
       = yield
       .clear
 
-    .footer Powered by BuildyBuild and &iexcl;Museo!
+    .footer All images &copy;2012 Laura Bearl. Web site build and maintained by Daniel Bearl using BuildyBuild and &iexcl;Museo!
