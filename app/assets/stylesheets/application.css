@@ -11,18 +11,16 @@
  *= require_self
  *= require_tree .
  */
-div {
-  /* border: 1px solid red; */
-}
 div.footer {
   text-align: center;
   border-top: solid 1px black;
+  font-size: 10pt;
 }
 
 div#main {
   width: 100%;
-  min-height: 500px;
   height: 100%;
+  min-height: 500px;
 }
 
 div.clear {
