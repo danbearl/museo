@@ -24,7 +24,7 @@
       .image
         .title= image.title
         .picture
-          = link_to image_tag(image.picture_url(:thumb).to_s), image.picture_url.to_s
+          = link_to image_tag(image.picture_url(:thumb).to_s), image
         - if current_user
           = link_to "Edit", edit_gallery_image_path(gallery, image)
           = " | "

@@ -1,2 +1,37 @@
-%h1 Image#show
-%p Find me in app/views/image/show.html.haml
+#page_body
+  .title
+    %h1= "#{owner.name}::#{image.title}"
+
+  #user_nav
+    - if current_user 
+      = link_to "Edit Image", edit_image_path(image)
+      |
+      = link_to "Destroy Image", image, :confirm => "Deleting image is irreversible. Do you wish to continue?", :method => :delete
+
+  #navigation
+    %ul
+      %li= link_to "Home", root_path
+      %li= link_to "Galleries", galleries_path
+      %li= link_to "About", slug_path("about")
+      %li= link_to "Resume", slug_path("resume")
+      %li= link_to "Contact", contact_path
+      %li= link_to "News", posts_path
+
+  .image_show
+    = image_tag image.picture_url.to_s
+
+  .image_data
+    %ul
+      %li
+        Title:
+        = image.title
+      %li
+        Category:
+        = image.category
+      %li 
+        Medium:
+        = image.medium
+      %li
+        Dimensions:
+        = image.dimensions
+
