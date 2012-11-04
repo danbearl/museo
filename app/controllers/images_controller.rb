@@ -1,9 +1,11 @@
 class ImagesController < ApplicationController
-
-  expose(:image, :model => Image)
-  expose(:images)
+  expose(:images) {Image.order(:id)}
+  expose(:image)
   expose(:gallery)
   expose(:owner) {image.gallery}
+  expose(:neighbors) {owner.images.order(:id)}
+  expose(:next_image) {image.next(images)}
+  expose(:prior_image) {image.prior(images)}
 
   def create
     @image = gallery.images.new(params[:image])

@@ -28,4 +28,12 @@
         = image.medium
       %li
         = image.dimensions
+      - if next_image
+        %li
+          = link_to "Next", next_image
+      - if prior_image
+        %li
+          = link_to "Previous", prior_image
+      %li
+        = link_to "Back to #{owner.name}", owner
 
