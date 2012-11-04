@@ -2,7 +2,7 @@ class GalleriesController < ApplicationController
 
   expose(:galleries) 
   expose(:gallery)
-  expose(:images) {gallery.images}  
+  expose(:images) {gallery.images.order(:id)}  
 
   def index
     galleries = Gallery.all
