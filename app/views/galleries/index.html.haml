@@ -19,7 +19,7 @@
       .image
         .title= g.name
         .picture
-          -if g.images.first
-            = link_to image_tag(g.thumb(g.images.first)), g
+          -if g.thumb_url
+            = link_to image_tag(g.thumb_url), g
           -else
             = link_to g.name, g
