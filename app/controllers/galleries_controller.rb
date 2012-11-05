@@ -3,6 +3,7 @@ class GalleriesController < ApplicationController
   expose(:galleries) 
   expose(:gallery)
   expose(:images) {gallery.images.order(:id)}  
+  expose(:first_image) {images.first}
 
   def create
     @gallery = Gallery.new(params[:gallery])
