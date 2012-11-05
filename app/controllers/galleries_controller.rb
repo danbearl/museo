@@ -4,10 +4,6 @@ class GalleriesController < ApplicationController
   expose(:gallery)
   expose(:images) {gallery.images.order(:id)}  
 
-  def index
-    galleries = Gallery.all
-  end 
-
   def create
     @gallery = Gallery.new(params[:gallery])
     if gallery.save
