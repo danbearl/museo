@@ -1,5 +1,5 @@
 class Gallery < ActiveRecord::Base
-  attr_accessible :name, :category, :thumb_url
+  attr_accessible :name, :category, :thumb_url, :priority
   has_many :images, :dependent => :destroy
 
   validates_presence_of :name

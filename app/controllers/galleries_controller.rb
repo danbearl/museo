@@ -1,8 +1,8 @@
 class GalleriesController < ApplicationController
 
-  expose(:galleries) 
+  expose(:galleries) {Gallery.order(:priority)}
   expose(:gallery)
-  expose(:images) {gallery.images.order(:id)}  
+  expose(:images) {gallery.images.order(:priority)}  
   expose(:first_image) {images.first}
 
   def create

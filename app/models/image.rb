@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :category, :title, :picture, :medium, :dimensions, :gallery_id
+  attr_accessible :category, :title, :picture, :medium, :dimensions, :gallery_id, :priority
   belongs_to :gallery
   mount_uploader :picture, PictureUploader
 

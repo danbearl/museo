@@ -25,6 +25,11 @@
       - @images_array = images.map {|image| [image.title, image.id]}
       = f.select(:thumb_url, options_for_select(@images_array, gallery.thumb_url))
 
+    .field
+      = f.label :priority
+      %br
+      = f.text_field :priority
+
     .action
       = f.submit "Update Gallery"
 - else
