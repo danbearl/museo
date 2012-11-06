@@ -32,6 +32,11 @@
   .field
     = f.file_field :picture
 
+    .field
+      = f.label :gallery_id
+      %br
+      - @galleries_array = Gallery.all.map {|gallery| [gallery.name, gallery.id]}
+      = f.select(:gallery_id, options_for_select(@galleries_array, image.gallery_id))
   .action
     = f.submit
 
