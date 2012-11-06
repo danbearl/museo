@@ -20,6 +20,6 @@
         .title= g.name
         .picture
           -if g.thumb_url
-            = link_to image_tag(g.thumb_url), g
+            = link_to image_tag(Image.find(g.thumb_url).picture_url(:thumb).to_s), g
           -else
             = link_to g.name, g

@@ -1,27 +1,34 @@
 %h3 Create New Gallery
 
-= form_for gallery do |f|
-  .error_messages
-    - if gallery.errors.any?
-      %h2 Form is invalid
-      %ul
-        - gallery.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :name
-    %br
-    = f.text_field :name
+- if current_user
+  = form_for gallery do |f|
+    .error_messages
+      - if gallery.errors.any?
+        %h2 Form is invalid
+        %ul
+          - gallery.errors.full_messages.each do |message|
+            %li= message
+    .field
+      = f.label :name
+      %br
+      = f.text_field :name
 
-  .field
-    = f.label :category
-    %br
-    = f.text_field :category
+    .field
+      = f.label :category
+      %br
+      = f.text_field :category
 
-  .field
-    = f.label :thumb_url
-    %br
-    - images_array = images.map {|image| [image.title, image.picture_url(:thumb)]}
-    = f.select(:thumb_url, options_for_select(images_array))
+    .field
+      = f.label :thumb_url
+      %br
+      - images_array = images.map {|image| [image.title, image.picture_url(:thumb)]}
+      = f.select(:thumb_url, options_for_select(images_array, gallery.thumb_url))
 
-  .action
-    = f.submit
+    .action
+      = f.submit
+
+-else
+  %h2 You must be logged in to use this action
+
+.bottom_nav
+  %p= link_to "Back", galleries_path

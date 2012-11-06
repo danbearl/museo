@@ -22,8 +22,8 @@
     .field
       = f.label :thumb_url
       %br
-      - images_array = images.map {|image| [image.title, image.picture_url(:thumb)]}
-      = f.select(:thumb_url, options_for_select(images_array))
+      - @images_array = images.map {|image| [image.title, image.id]}
+      = f.select(:thumb_url, options_for_select(@images_array, gallery.thumb_url))
 
     .action
       = f.submit "Update Gallery"
