@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  expose(:posts)
+  expose(:posts) {Post.order("updated_at DESC")}
   expose(:post)
 
   def create
