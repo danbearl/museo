@@ -6,6 +6,7 @@
       %ul
         -image.errors.full_messages.each do |message|
           %li= message
+  = hidden_field_tag :gallery_id, value: gallery.id
 
   .field
     = f.label :title
