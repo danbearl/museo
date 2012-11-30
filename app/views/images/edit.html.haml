@@ -1,4 +1,4 @@
-%h1= "Editing #{gallery.name} :: #{image.title}"
+%h1= "Editing #{owner.name} :: #{image.title}"
 
 = form_for image, :url => {:action => "update"} do |f|
 
@@ -47,4 +47,4 @@
     = f.submit
 
 .bottom_nav
-  =link_to "Back", gallery
+  =link_to "Back", owner

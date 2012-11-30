@@ -1,16 +1,15 @@
 class ImagesController < ApplicationController
-  expose(:images) {Image.order(:id)}
+  expose(:images) {Image.order('images.priority, images.updated_at DESC')}
   expose(:image)
   expose(:gallery)
   expose(:owner) {image.gallery}
-  expose(:neighbors) {owner.images.order(:id)}
-  expose(:next_image) {image.next(images)}
-  expose(:prior_image) {image.prior(images)}
+  expose(:neighbors) {owner.images.order('images.priority, images.updated_at DESC')}
+  expose(:next_image) {image.next(neighbors)}
+  expose(:prior_image) {image.prior(neighbors)}
 
   def create
-    @image = gallery.images.new(params[:image])
 
-    if @image.save
+    if image.save
       redirect_to gallery, notice: "Image successfully created."
     else
       render "new"
@@ -19,7 +18,7 @@ class ImagesController < ApplicationController
 
   def update
     if image.save
-      redirect_to gallery, notice: "Image successfully updated."
+      redirect_to owner, notice: "Image successfully updated."
     else
       render "edit"
     end
@@ -27,7 +26,7 @@ class ImagesController < ApplicationController
 
   def destroy
     image.destroy
-    redirect_to gallery, notice: "Image successfully deleted."
+    redirect_to owner, notice: "Image successfully deleted."
   end
 
 end
