@@ -1,5 +1,7 @@
 class GalleriesController < ApplicationController
 
+  before_filter :require_user, except: [:index, :show]
+
   expose(:galleries) {Gallery.order(:priority)}
   expose(:gallery)
   expose(:images) {gallery.images.order('images.priority, images.updated_at DESC')}  
