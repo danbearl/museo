@@ -12,16 +12,17 @@ class ImagesController < ApplicationController
 
   def create
 
-    if image.save
-      redirect_to gallery, notice: "Image successfully created."
+    @image = gallery.images.build(image_params)
+    if @image.save
+      redirect_to @image, notice: "Image successfully created."
     else
       render "new"
     end
   end
 
   def update
-    if image.save
-      redirect_to owner, notice: "Image successfully updated."
+    if image.update_attributes(image_params)
+      redirect_to image_path(image.id), notice: "Image successfully updated."
     else
       render "edit"
     end
@@ -29,7 +30,16 @@ class ImagesController < ApplicationController
 
   def destroy
     image.destroy
-    redirect_to owner, notice: "Image successfully deleted."
+    unless owner.nil?
+      redirect_to owner, notice: "Image successfully deleted."
+    else
+      redirect_to :root, notice: "Image successfully deleted."
+    end
   end
 
+  private
+
+  def image_params
+    params.require(:image).permit(:category, :title, :picture, :medium, :dimensions, :gallery_id, :priority)
+  end
 end

@@ -2,12 +2,12 @@
 
 = form_tag sessions_path do
   .field
-    = label_tag :name
+    = label_tag :email
     %br
-    = text_field_tag :name, params[:name]
+    = text_field_tag :email, params[:email]
   .field
     = label_tag :password
     %br
     = password_field_tag :password
   .action
-    = submit_tag
+    = submit_tag "Sign In"

@@ -1,9 +1,11 @@
 Feature: Post
 	Scenario: Create post
 		Given the following user:
-			| name     | user |
-			| password | pass |
-		And I am on ths posts index.
+			| email                 | user@example.com |
+			| password              | pass |
+      | password_confirmation | pass |
+    And that user is signed in.
+		And I am on the posts index.
 		When I follow "New Post"
 		And I fill in the following:
 			| post_title | first post             |
@@ -14,12 +16,14 @@ Feature: Post
 
 	Scenario: update post
 		Given the following user:
-			| name     | user |
-			| password | pass |
+			| email                 | user@example.com |
+			| password              | pass |
+      | password_confirmation | pass |
+    And that user is signed in.
 		And the following post:
 			| title | first post             |
 			| body  | this is the first post |
-		And I am on that post's page.
+		And I am on the posts index.
 		When I follow "Edit"
 		And I fill in the following:
 			| post_body | This is the updated body. |
@@ -29,12 +33,14 @@ Feature: Post
 
 	Scenario: Destroy post
 		Given the following user:
-			| name     | user |
-			| password | pass |
+			| email                 | user@example.com |
+			| password              | pass |
+      | password_confirmation | pass |
+    And that user is signed in.
 		And the following post:
 			| title | first post |
 			| body  | test       |
-		And I am on that post's page.
+		And I am on the posts index.
 		When I follow "Delete"
 		Then I should see "Post successfully deleted."
 

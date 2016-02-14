@@ -16,14 +16,13 @@
 
     #user_nav
       - if current_user
-        = "Logged in as #{current_user.name}"
-        = link_to "Log Out", log_out_path
+        = link_to "Sign Out", log_out_path
+        |
+        = link_to "Create Page", new_page_path
 
     #main
       = yield
       .clear
 
     .footer
-      All images &copy;2012 Laura Bearl. Web site build and maintained by Daniel Bearl using 
-      = link_to "BuildyBuild", "https://github.com/mrmicahcooper/buildybuild"
-      and &iexcl;Museo!
+      All images &copy;2016 Laura Bearl.

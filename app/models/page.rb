@@ -1,8 +1,6 @@
 class Page < ActiveRecord::Base
 
-  attr_accessible :body, :name, :slug
-
-  default_scope order('created_at DESC, updated_at DESC')
+  default_scope { order('created_at DESC, updated_at DESC') }
 
   validates_uniqueness_of :name
 

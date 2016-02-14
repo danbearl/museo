@@ -6,7 +6,7 @@
     - if current_user
       = link_to "Edit Gallery", edit_gallery_path(gallery)
       = " | "
-      = link_to "Destroy Gallery", gallery, :confirm => "Deleting a gallery will delete all associated images and is irreversible. Do you wish to continue?", :method => :delete
+      = link_to "Delete Gallery", gallery, :confirm => "Deleting a gallery will delete all associated images and is irreversible. Do you wish to continue?", :method => :delete
       = " | "
       = link_to "New Image", new_gallery_image_path(gallery)
 
@@ -14,9 +14,8 @@
     %ul
       %li= link_to "Home", root_path
       %li= link_to "Galleries", galleries_path
-      %li= link_to "About", slug_path("about")
-      %li= link_to "Resume", slug_path("resume")
-      %li= link_to "Contact", contact_path
+      -pages.each do |page|
+        %li= link_to page.name, slug_path(page.slug)
       %li= link_to "News", posts_path
 
   .images

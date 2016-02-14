@@ -1,20 +1,19 @@
 #page_body
   .title
-    %h1= "#{owner.name}::#{image.title}"
+    %h1= "#{image.gallery.nil? ? "" : image.gallery.name}::#{image.title}"
 
   #user_nav
     - if current_user 
-      = link_to "Edit Image", edit_image_path(image)
+      = link_to "Edit", edit_image_path(image)
       |
-      = link_to "Destroy Image", image, :confirm => "Deleting image is irreversible. Do you wish to continue?", :method => :delete
+      = link_to "Delete", image, :confirm => "Deleting image is irreversible. Do you wish to continue?", :method => :delete
 
   #navigation
     %ul
       %li= link_to "Home", root_path
       %li= link_to "Galleries", galleries_path
-      %li= link_to "About", slug_path("about")
-      %li= link_to "Resume", slug_path("resume")
-      %li= link_to "Contact", contact_path
+      -pages.each do |page|
+        %li= link_to page.name, slug_path(page.slug)
       %li= link_to "News", posts_path
 
   .image_show
@@ -28,12 +27,13 @@
         = image.medium
       %li
         = image.dimensions
-      - if next_image
+      - unless image.gallery.nil?
+        - if next_image
+          %li
+            = link_to "Next", next_image
+        - if prior_image
+          %li
+            = link_to "Previous", prior_image
         %li
-          = link_to "Next", next_image
-      - if prior_image
-        %li
-          = link_to "Previous", prior_image
-      %li
-        = link_to "Back to #{owner.name}", owner
+          = link_to "Back to #{owner.name}", owner
 

@@ -9,24 +9,38 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106193251) do
+ActiveRecord::Schema.define(version: 20160214202059) do
 
-  create_table "galleries", :force => true do |t|
+  create_table "authem_sessions", force: :cascade do |t|
+    t.string   "role",                    null: false
+    t.integer  "subject_id",              null: false
+    t.string   "subject_type",            null: false
+    t.string   "token",        limit: 60, null: false
+    t.datetime "expires_at",              null: false
+    t.integer  "ttl",                     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authem_sessions", ["expires_at", "subject_type", "subject_id"], name: "index_authem_sessions_subject"
+  add_index "authem_sessions", ["expires_at", "token"], name: "index_authem_sessions_on_expires_at_and_token", unique: true
+
+  create_table "galleries", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "category"
     t.string   "thumb_url"
     t.integer  "priority"
   end
 
-  create_table "images", :force => true do |t|
+  create_table "images", force: :cascade do |t|
     t.string   "title"
     t.string   "category"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "picture"
     t.integer  "gallery_id"
     t.string   "dimensions"
@@ -34,27 +48,28 @@ ActiveRecord::Schema.define(:version => 20121106193251) do
     t.integer  "priority"
   end
 
-  create_table "pages", :force => true do |t|
+  create_table "pages", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "priority"
   end
 
-  create_table "posts", :force => true do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "body"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "password_hash"
-    t.string   "password_salt"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "name"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
+    t.string   "password_reset_token", limit: 60, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

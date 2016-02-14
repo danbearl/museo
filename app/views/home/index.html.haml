@@ -5,9 +5,8 @@
   #navigation
     %ul
       %li= link_to "Galleries", galleries_path
-      %li= link_to "About", "/about"
-      %li= link_to "Resume", "/resume"
-      %li= link_to "Contact", contact_path
+      - pages.each do
+        %li= link_to page.slug, page
       %li= link_to "News", posts_path
   #painting
     = image_tag "/assets/IMG_6103s.jpg", height: "400"

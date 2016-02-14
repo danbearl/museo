@@ -1,4 +1,4 @@
-%h1= "Editing #{owner.name} :: #{image.title}"
+%h1= "Editing #{owner.nil? ? "" : owner.name} :: #{image.title}"
 
 = form_for image, :url => {:action => "update"} do |f|
 
@@ -46,5 +46,6 @@
   .action
     = f.submit
 
-.bottom_nav
-  =link_to "Back", owner
+-unless owner.nil?
+  .bottom_nav
+    =link_to "Back", owner

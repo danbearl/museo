@@ -1,5 +1,5 @@
 - if current_user
-  = form_for page, builder: Formal::Builder do |f|
+  = form_for page do |f|
     = render partial: "form", locals: { f:f }
 - else
   = "You must be logged in to do this."

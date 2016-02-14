@@ -1,12 +1,14 @@
 Feature: Page
 	Scenario: Create page
 		Given the following user:
-			| name     | user |
-			| password | pass |
-		And I am on the home view.
+			| email                 | user@example.com |
+			| password              | pass             |
+      | password_confirmation | pass             |
+    And that user is signed in.
+		And I am on the home page
 		When I follow "Create Page"
 		And I fill in the following:
-			| page_title    | About                  |
+			| page_name     | About                  |
 			| page_body     | This is the about page |
 			| page_priority | 1                      |
 		And I press "Create Page"
@@ -15,14 +17,16 @@ Feature: Page
 
 	Scenario: Update page
 		Given the following user:
-			| name     | user |
-			| password | pass |
+			| email                 | user@example.com |
+			| password              | pass             |
+      | password_confirmation | pass             |
+    And that user is signed in.
 		And the following page:
-			| title    | about                  |
+			| name     | about                  |
 			| body     | This is the about page |
 			| priority | 1                      |
 		And I am on that page.
-		When I follow "Edit Page"
+    When I follow "edit"
 		And I fill in the following:
 			| page_body | This is the updated body. |
 		And I press "Update Page"
@@ -31,13 +35,15 @@ Feature: Page
 
 	Scenario: Destroy page
 		Given the following user:
-			| name     | user |
-			| password | pass |
+			| email                 | user@example.com |
+			| password              | pass             |
+      | password_confirmation | pass             |
+    And that user is signed in.
 		And the following page:
-			| title    | about                   |
+			| name     | about                   |
 			| body     | This is the about page. |
 			| priority | 1                       |
 		And I am on that page.
-		When I follow "Delete Page"
+		When I follow "delete"
 		Then I should see "Page successfully deleted."
 			
